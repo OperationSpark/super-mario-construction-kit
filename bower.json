@@ -1,0 +1,28 @@
+{
+  "name": "play-processing",
+  "version": "0.0.0",
+  "homepage": "https://github.com/togakangaroo/play-processing",
+  "authors": [
+    "George Mauer <gmauer@gmail.com>"
+  ],
+  "description": "Operation Spark exercises that simply use processing to draw stuff",
+  "main": "index.html",
+  "keywords": [
+    "operation-spark",
+    "Operation",
+    "Spark",
+    "Exercises"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Processing.js": "~1.4.13"
+  }
+}
