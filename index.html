@@ -29,25 +29,31 @@
 	<script>
 		(function() {
 			'use strict'
-			var errorArea;
+			var errorArea, currentCode, attemptRefresh, processingInstance;
 			errorArea = document.querySelector('.error');
 
-			qwest.get("code.js").then(function(code) {
-				new Processing(document.querySelector('canvas'), function(p) {
-					var sketch;
-					p.size(400, 400);
-					p.background(255, 255, 255);
+			processingInstance = new Processing(document.querySelector('canvas'), function(p) {
+				p.size(400, 400);
+			});
+			attemptRefresh = function() {
+				qwest.get("code.js").then(function(code) {
+					if(code === currentCode) return;
+					currentCode = code;
 
-					sketch = Processing.compile(code);
 					errorArea.innerText = "";
+					processingInstance.background(255, 255, 255);
 					try {
-						sketch.attach(p);
+						Processing.compile(code).attach(processingInstance);
 					} catch(err) {
 						console.error(err);
 						errorArea.innerText = err.message;
 					}
 				});
-			});
+
+				setTimeout(attemptRefresh, 3000);
+			}
+
+			attemptRefresh()
 		})()
 	</script>
 </body>
