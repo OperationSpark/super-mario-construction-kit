@@ -42,6 +42,7 @@
 
 					errorArea.innerText = "";
 					processingInstance.background(255, 255, 255);
+					processingInstance.noFill();
 					try {
 						Processing.compile(code).attach(processingInstance);
 					} catch(err) {
