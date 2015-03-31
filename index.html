@@ -6,11 +6,49 @@
 		canvas {
 			width: 400px;
 			height: 400px;
+			border: 2px solid black;
+		}
+		.error {
+			background-color: pink;
+			color: red;
+			padding: 1em;
+			border: 2px solid red;
+			margin-bottom: 10px;
+			width: calc(400px - 2em);
+		}
+		.error:empty {
+			display: none;
 		}
 	</style>
 </head>
 <body>
-	<canvas data-processing-sources="code.pde" width=400 height=400 ></canvas>
-	<script src="/bower_components/Processing.js/processing.min.js"></script>
+	<aside class="error"></aside>
+	<canvas></canvas>
+	<script src="bower_components/Processing.js/processing.min.js"></script>
+	<script src="bower_components/qwest/qwest.min.js"></script>
+	<script>
+		(function() {
+			'use strict'
+			var errorArea;
+			errorArea = document.querySelector('.error');
+
+			qwest.get("code.js").then(function(code) {
+				new Processing(document.querySelector('canvas'), function(p) {
+					var sketch;
+					p.size(400, 400);
+					p.background(255, 255, 255);
+
+					sketch = Processing.compile(code);
+					errorArea.innerText = "";
+					try {
+						sketch.attach(p);
+					} catch(err) {
+						console.error(err);
+						errorArea.innerText = err.message;
+					}
+				});
+			});
+		})()
+	</script>
 </body>
 </html>

@@ -23,6 +23,7 @@
     "tests"
   ],
   "dependencies": {
-    "Processing.js": "~1.4.13"
+    "Processing.js": "~1.4.13",
+    "qwest": "~1.5.10"
   }
 }
