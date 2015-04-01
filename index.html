@@ -4,9 +4,9 @@
 	<title>Simple Processing App</title>
 	<style>
 		canvas {
-			width: 400px;
-			height: 400px;
-			border: 2px solid black;
+			width: 600px;
+			height: 600px;
+//			border: 2px solid black;
 		}
 		.error {
 			background-color: pink;
@@ -33,7 +33,7 @@
 			errorArea = document.querySelector('.error');
 
 			processingInstance = new Processing(document.querySelector('canvas'), function(p) {
-				p.size(400, 400);
+				p.size(600, 600);
 			});
 			attemptRefresh = function() {
 				qwest.get("code.js").then(function(code) {
