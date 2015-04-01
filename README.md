@@ -1,5 +1,7 @@
 Super Mario Construction Kit
 
+![Screenshot](screenshot.png)
+
 1) Change the code to make a better box
 
     var size = 100;
