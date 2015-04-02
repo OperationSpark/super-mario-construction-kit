@@ -1,3 +1,4 @@
+/* global background,fill,rect,line */
 'use strict';
 
 // draw the background
